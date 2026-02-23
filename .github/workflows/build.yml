@@ -10,9 +10,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build APK
+      - name: Grant permission
+        run: chmod +x gradlew
+      - name: Build with Gradle
         run: ./gradlew assembleDebug
-      - name: Upload APK
+      - name: Save APK
         uses: actions/upload-artifact@v3
         with:
           name: Yeoboe-App

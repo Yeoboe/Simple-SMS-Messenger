@@ -1,21 +1,22 @@
+
 name: Build Yeoboe APK
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Grant permission
+      - name: Grant permissions
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew assembleDebug
       - name: Save APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: Yeoboe-App
+          name: Yeoboe-APK
           path: app/build/outputs/apk/debug/*.apk
